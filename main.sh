@@ -96,9 +96,10 @@ install_command(){
 
 check_docker_installed() {
   if command -v docker &> /dev/null; then
-    echo "Docker is installed."
+    echo -e "${GREEN}Docker is installed.${NC}"
   else
-    echo "Docker is not installed."
+    echo -e "${RED}Docker is not installed.${NC}"
+
   fi
 }
 
