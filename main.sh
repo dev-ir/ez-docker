@@ -41,18 +41,22 @@ menu(){
     
     # Fetch server isp using ip-api.com
     SERVER_ISP=$(curl -sS "http://ip-api.com/json/$SERVER_IP" | jq -r '.isp')
+
+    Docker_CORE=$(check_docker_installed)
+
     
     echo "+--------------------------------------------------------------------------------------+"
     echo "|  ______  ______         _____    ____    _____  _  __ ______  _____                  |"
     echo "| |  ____||___  /        |  __ \  / __ \  / ____|| |/ /|  ____||  __ \                 |"
     echo "| | |__      / /  ______ | |  | || |  | || |     | ' / | |__   | |__) |  TG CHANNEL    |"
-    echo "| |  __|    / /  |______|| |  | || |  | || |     |  <  |  __|  |  _  /  _DVHOST_CLOUD_ |"
-    echo "| | |____  / /__         | |__| || |__| || |____ | . \ | |____ | | \ \  ( 0.6 )        |"
-    echo "| |______|/_____|        |_____/  \____/  \_____||_|\_\|______||_|  \_\                |"
+    echo "| |  __|    / /  |______|| |  | || |  | || |     |  <  |  __|  |  _  /  @DVHOST_CLOUD  |"
+    echo "| | |____  / /__         | |__| || |__| || |____ | . \ | |____ | | \ \                 |"
+    echo "| |______|/_____|        |_____/  \____/  \_____||_|\_\|______||_|  \_\ ( 0.6 )         |"
     echo "+--------------------------------------------------------------------------------------+"
     echo -e "|${GREEN}Server Country    |${NC} $SERVER_COUNTRY"
     echo -e "|${GREEN}Server IP         |${NC} $SERVER_IP"
     echo -e "|${GREEN}Server ISP        |${NC} $SERVER_ISP"
+    echo -e "|${GREEN}Server Docker     |${NC} $Docker_CORE"
     echo "+-------------------------------------------------------------------------------+"
     echo -e "|${YELLOW}Please choose an option:${NC}"
     echo "+-------------------------------------------------------------------------------+"
@@ -90,11 +94,18 @@ install_command(){
     python3 docker-installer.py
 }
 
+check_docker_installed() {
+  if command -v docker &> /dev/null; then
+    echo "Docker is installed."
+  else
+    echo "Docker is not installed."
+  fi
+}
 
 unistall(){
     
     echo $'\e[32mUninstalling Docker in 3 seconds... \e[0m' && sleep 1 && echo $'\e[32m2... \e[0m' && sleep 1 && echo $'\e[32m1... \e[0m' && sleep 1 && {
-        sudo apt-get purge docker-ce docker-ce-cli containerd.io
+        sudo apt-get purge docker-ce docker-ce-cli containerd.io -y
         sudo rm -rf /var/lib/docker
         sudo rm -rf /var/lib/containerd
         rm -rf docker-installer.py
