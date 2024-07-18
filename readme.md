@@ -18,8 +18,11 @@ bash <(curl -Ls https://raw.githubusercontent.com/dev-ir/ez-docker/master/main.s
 
 ## 🪚 Preview
 <p align="left">
-    <img width="100%" src="https://github.com/user-attachments/assets/dad57668-2b4c-4c23-9c33-de77c1b2629d" alt="Image">
+    <img width="100%" src="https://github.com/user-attachments/assets/47e6eb73-ac10-4ec0-9ab4-b37ad74c4e61" alt="Image">
 </p>
+
+## 🤟🏻 Special Thanks to
+- [Kiya6955](https://github.com/Kiya6955)
 
 ## 🙏 Support with Crypto 
 **We don't need financial support, only Star (⭐) is enough, thank you.**
