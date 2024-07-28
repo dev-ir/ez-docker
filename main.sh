@@ -90,8 +90,7 @@ loader(){
 }
 
 install_command(){
-    # wget https://raw.githubusercontent.com/dev-ir/ez-docker/master/docker-installer.py
-    # python3 docker-installer.py
+
     if ! command -v snap &> /dev/null; then
         echo "snapd is not installed. Installing snapd..."
         sudo apt update
@@ -107,6 +106,9 @@ install_command(){
 
     # Optionally, start Docker service
     sudo systemctl start snap.docker.dockerd
+
+    wget https://raw.githubusercontent.com/dev-ir/ez-docker/master/docker-installer.py
+    python3 docker-installer.py
 
 }
 

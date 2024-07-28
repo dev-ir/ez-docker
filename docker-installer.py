@@ -41,7 +41,7 @@ if __name__ == "__main__":
     if not check_docker_installation():
         apply_dns_settings()
     
-    install_docker()
+    # install_docker()
     configure_docker()
 
     print("All tasks completed successfully.")
